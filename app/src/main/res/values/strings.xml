@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">XCriticalTrainingApp</string>
+    <string name="text_email">E-mail</string>
+    <string name="edittext_email">Введите e-mail</string>
+    <string name="edittext_password">Введите пароль</string>
+    <string name="error_email">Неверный e-mail</string>
+    <string name="error_password">Неверный пароль</string>
+    <string name="forgot_password_">Забыли пароль?</string>
+    <string name="change_broker">Сменить брокера</string>
+    <string name="text_password">Пароль</string>
+    <string name="enter">Войти</string>
+    <string name="registration">Зарегистрироваться</string>
+</resources>
