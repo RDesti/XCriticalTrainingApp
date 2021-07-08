@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/app_black"
     tools:context=".MainActivity">
 
     <ImageView
@@ -24,154 +24,153 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.2" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
-
     <LinearLayout
-        android:layout_width="363dp"
-        android:layout_height="115dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3">
 
-        <TextView
-            android:id="@+id/textViewEmail"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:padding="5sp"
-            android:text="@string/text_email"
-            android:textColor="@color/white" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextEmail"
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="5sp"
+                android:text="@string/text_email"
+                android:textColor="@color/app_white" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:backgroundTint="@color/app_purple"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:hint="@string/edittext_email"
+                android:inputType="textEmailAddress"
+                android:onClick="checkEmailText"
+                android:padding="5sp"
+                android:textColor="@color/app_white"
+                android:textColorHint="@color/app_purple"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textViewErrorEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="@string/error_email"
+                android:textColor="@color/app_red"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:backgroundTint="@color/purple"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="@string/edittext_email"
-            android:inputType="textEmailAddress"
-            android:onClick="checkEmailText"
-            android:padding="5sp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/purple"
-            android:textSize="14sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewErrorEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5sp"
-            android:text="@string/error_email"
-            android:textColor="@color/red"
-            android:visibility="invisible" />
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="5sp"
+                android:text="@string/text_password"
+                android:textColor="@color/app_white" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:backgroundTint="@color/app_purple"
+                android:ems="10"
+                android:hint="@string/edittext_password"
+                android:inputType="textPassword"
+                android:onClick="checkPasswordText"
+                android:padding="5sp"
+                android:textColor="@color/app_white"
+                android:textColorHint="@color/app_purple"
+                android:textSize="14sp" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="364dp"
-        android:layout_height="226dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:id="@+id/textViewErrorPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:padding="5sp"
+                android:text="@string/error_password"
+                android:textColor="@color/app_red"
+                android:visibility="invisible" />
 
-        <TextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:padding="5sp"
-            android:text="@string/text_password"
-            android:textColor="@color/white" />
-
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:backgroundTint="@color/purple"
-            android:ems="10"
-            android:hint="@string/edittext_password"
-            android:inputType="textPassword"
-            android:onClick="checkPasswordText"
-            android:padding="5sp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/purple"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/textViewErrorPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:padding="5sp"
-            android:text="@string/error_password"
-            android:textColor="@color/red"
-            android:visibility="invisible" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewForgotPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:clickable="true"
-            android:padding="5sp"
+            android:padding="7dp"
             android:text="@string/forgot_password_"
             android:textAlignment="center"
-            android:textColor="@color/blue" />
-    </LinearLayout>
+            android:textColor="@color/app_blue" />
 
-    <LinearLayout
-        android:layout_width="361dp"
-        android:layout_height="162dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4">
-
-        <Button
-            android:id="@+id/buttonSignIn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/buttons_style"
-            android:backgroundTint="@color/blue"
-            android:onClick="showSignInWindow"
-            android:text="@string/enter"
-            android:textIsSelectable="true" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buttonRegistration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/buttons_style"
-            android:backgroundTint="@color/darkBlue"
-            android:text="@string/registration"
-            android:textIsSelectable="true" />
+            <Button
+                android:id="@+id/buttonSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/buttons_blue_style"
+                android:onClick="showSignInWindow"
+                android:text="@string/enter"
+                android:textIsSelectable="true" />
+
+            <Button
+                android:id="@+id/buttonRegistration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/buttons_darkblue_style"
+                android:text="@string/registration"
+                android:textIsSelectable="true" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewChangeBroker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
             android:clickable="true"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
             android:text="@string/change_broker"
             android:textAlignment="center"
-            android:textColor="@color/blue" />
+            android:textColor="@color/app_blue" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
