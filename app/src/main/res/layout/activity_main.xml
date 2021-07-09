@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_black"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <ImageView
@@ -26,9 +26,11 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +50,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="5sp"
                 android:text="@string/text_email"
-                android:textColor="@color/app_white" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/editTextEmail"
@@ -62,7 +64,7 @@
                 android:inputType="textEmailAddress"
                 android:onClick="checkEmailText"
                 android:padding="5sp"
-                android:textColor="@color/app_white"
+                android:textColor="@color/white"
                 android:textColorHint="@color/app_purple"
                 android:textSize="14sp" />
 
@@ -91,7 +93,7 @@
                 android:layout_marginBottom="10dp"
                 android:padding="5sp"
                 android:text="@string/text_password"
-                android:textColor="@color/app_white" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/editTextPassword"
@@ -104,7 +106,7 @@
                 android:inputType="textPassword"
                 android:onClick="checkPasswordText"
                 android:padding="5sp"
-                android:textColor="@color/app_white"
+                android:textColor="@color/white"
                 android:textColorHint="@color/app_purple"
                 android:textSize="14sp" />
 
@@ -151,7 +153,7 @@
                 android:id="@+id/buttonRegistration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/buttons_darkblue_style"
                 android:text="@string/registration"
                 android:textIsSelectable="true" />
@@ -162,8 +164,8 @@
             android:id="@+id/textViewChangeBroker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="5dp"
             android:clickable="true"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"

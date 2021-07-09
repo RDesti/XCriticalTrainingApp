@@ -10,4 +10,5 @@
     <string name="text_password">Пароль</string>
     <string name="enter">Войти</string>
     <string name="registration">Зарегистрироваться</string>
+    <string name="send">Отправить</string>
 </resources>
