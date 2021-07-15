@@ -11,30 +11,28 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import com.example.xcriticaltrainingapp.databinding.ActivityBottomNavBinding
+import com.example.xcriticaltrainingapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mViewModel: MainViewModel
-
-    private val errorEmail by lazy { findViewById<TextView>(R.id.textViewErrorEmail) }
-    private val errorPassword by lazy { findViewById<TextView>(R.id.textViewErrorPassword)}
-    private val textEmail by lazy { findViewById<EditText>(R.id.editTextEmail) }
-    private val textPassword by lazy { findViewById<EditText>(R.id.editTextPassword)}
-    private val buttonEnter by lazy {findViewById<Button>(R.id.buttonSignIn)}
-    private val buttonRegistration by lazy {findViewById<Button>(R.id.buttonRegistration)}
-    private val textViewForgotPass by lazy { findViewById<TextView>(R.id.textViewForgotPassword) }
+    private lateinit var mViewModel: MainViewModel
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         initListeners()
 
-        textViewForgotPass.setOnClickListener{
+        binding.textViewForgotPassword.setOnClickListener{
             val transition = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(transition)
         }
 
-        buttonRegistration.setOnClickListener {
+        binding.buttonRegistration.setOnClickListener {
             val intent = Intent(this, BottomNavActivity::class.java)
             startActivity(intent)
         }
@@ -75,34 +73,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        textEmail.addTextChangedListener(object : TextWatcher {
+        binding.editTextEmail.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {}
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                errorEmail.visibility = View.INVISIBLE
+                binding.textViewErrorEmail.visibility = View.INVISIBLE
             }
         })
 
-        textPassword.addTextChangedListener(object : TextWatcher {
+        binding.editTextPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {}
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                errorPassword.visibility = View.INVISIBLE
+                binding.textViewErrorPassword.visibility = View.INVISIBLE
             }
         })
 
-        buttonEnter.setOnClickListener {
-            
-            mViewModel.isValidPassword(textPassword.text.toString())
+        binding.buttonSignIn.setOnClickListener {
 
-            if(!(mViewModel.isValidData.value)!!){
-                errorPassword.visibility = View.VISIBLE
+            mViewModel.isInvalidPassword(binding.editTextPassword.text.toString())
+
+            if(mViewModel.isValidData.value!!){
+                binding.textViewErrorPassword.visibility = View.VISIBLE
             }
 
-            mViewModel.isValidEmail(textEmail.text.toString())
+            mViewModel.isValidEmail(binding.editTextEmail.text.toString())
 
             if (!(mViewModel.isValidData.value)!!) {
-                    errorEmail.visibility = View.VISIBLE
+                binding.textViewErrorEmail.visibility = View.VISIBLE
             }
         }
     }

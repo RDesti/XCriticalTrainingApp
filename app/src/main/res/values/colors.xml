@@ -12,4 +12,5 @@
     <color name="app_purple">#7373A4</color>
     <color name="app_red">#FF2A50</color>
     <color name="app_orange">#FF7849</color>
+    <color name="app_dark_bot_nav">#0D0D31</color>
 </resources>

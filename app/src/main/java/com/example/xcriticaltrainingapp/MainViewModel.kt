@@ -15,10 +15,10 @@ class MainViewModel() : ViewModel() {
         _isValidData.value = (Pattern.compile(
             """^[^@\s\.]+@[^@\s]+\.[^@\s]+$"""
         ).matcher(email).matches())
-                || (email.isEmpty())
+                && (email.isNotEmpty())
     }
 
-    fun isValidPassword(password: String){
+    fun isInvalidPassword(password: String){
         _isValidData.value = password.isEmpty()
     }
 }

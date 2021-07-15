@@ -62,7 +62,6 @@
                 android:fontFamily="sans-serif"
                 android:hint="@string/edittext_email"
                 android:inputType="textEmailAddress"
-                android:onClick="checkEmailText"
                 android:padding="5sp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/app_purple"
@@ -104,7 +103,6 @@
                 android:ems="10"
                 android:hint="@string/edittext_password"
                 android:inputType="textPassword"
-                android:onClick="checkPasswordText"
                 android:padding="5sp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/app_purple"
@@ -145,7 +143,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/buttons_blue_style"
-                android:onClick="showSignInWindow"
                 android:text="@string/enter"
                 android:textIsSelectable="true" />
 
@@ -159,19 +156,6 @@
                 android:textIsSelectable="true" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textViewChangeBroker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="5dp"
-            android:clickable="true"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:text="@string/change_broker"
-            android:textAlignment="center"
-            android:textColor="@color/app_blue" />
 
     </LinearLayout>
 
