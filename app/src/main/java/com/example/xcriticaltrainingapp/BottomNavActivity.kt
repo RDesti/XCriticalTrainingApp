@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.xcriticaltrainingapp.databinding.ActivityBottomNavBinding
 
 class BottomNavActivity : AppCompatActivity() {
@@ -18,8 +19,6 @@ class BottomNavActivity : AppCompatActivity() {
 
         binding = ActivityBottomNavBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
         val navView: BottomNavigationView = binding.navView
 
@@ -38,7 +37,5 @@ class BottomNavActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
     }
 }
