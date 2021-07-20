@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.xcriticaltrainingapp.R
 import com.example.xcriticaltrainingapp.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
@@ -24,7 +23,7 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 

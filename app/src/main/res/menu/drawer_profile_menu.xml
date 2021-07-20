@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:title="@string/about_app"
+            android:id="@+id/about_app"
+            android:icon="@drawable/ic_info_about_app"/>
+        <item android:title="@string/notification"
+            android:id="@+id/notification"
+            android:icon="@drawable/ic_chat"/>
+        <item android:title="@string/setting"
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_settings"/>
+        <item android:title="@string/exit"
+            android:id="@+id/exit"
+            android:icon="@drawable/ic_close"/>
+    </group>
+
+</menu>

@@ -38,38 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-        Log.d("MyLogMainAct", "onCreate")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("MyLogMainAct", "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("MyLogMainAct", "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("MyLogMainAct", "onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("MyLogMainAct", "onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("MyLogMainAct", "onDestroy")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d("MyLogMainAct", "onRestart")
+        binding.mainViewModel = mViewModel
     }
 
     private fun initListeners() {

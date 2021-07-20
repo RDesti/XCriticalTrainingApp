@@ -15,4 +15,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="profile">Профиль</string>
+    <string name="about_app">О приложении</string>
+    <string name="call_support">Связаться с поддержкой</string>
+    <string name="notification">Уведомления</string>
+    <string name="setting">Настройки</string>
+    <string name="exit">Выйти</string>
+    <string name="email_profile">user@gmail.com</string>
 </resources>
