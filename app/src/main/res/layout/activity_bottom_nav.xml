@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
@@ -12,9 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/drawer_profile_menu"
-        app:headerLayout="@layout/header_profile_menu" />
-
+        app:headerLayout="@layout/header_profile_menu"
+        app:menu="@menu/drawer_profile_menu" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
@@ -24,12 +24,13 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
             android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_list" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"
@@ -70,7 +71,6 @@
             app:navGraph="@navigation/mobile_navigation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
