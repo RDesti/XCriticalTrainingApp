@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ForgotPasswordActivity : AppCompatActivity() {
     private val errorEmailFP by lazy { findViewById<TextView>(R.id.textViewErrorEmailFP) }
     private val textEmailFP by lazy { findViewById<EditText>(R.id.editTextEmailFP) }

@@ -13,7 +13,9 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.xcriticaltrainingapp.databinding.ActivityBottomNavBinding
 import com.example.xcriticaltrainingapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var mViewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
