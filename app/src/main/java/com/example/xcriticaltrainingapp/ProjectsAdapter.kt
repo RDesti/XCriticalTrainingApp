@@ -1,18 +1,14 @@
 package com.example.xcriticaltrainingapp
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.xcriticaltrainingapp.ui.home.HomeFragment
 
-class ProjectsAdapter(arrayList: ArrayList<ModelProjects>): RecyclerView.Adapter<ProjectsAdapter.ViewHolder>() {
-    private var _arrayList = arrayList
+class ProjectsAdapter(list: MutableList<ModelProjects>): RecyclerView.Adapter<ProjectsAdapter.ViewHolder>() {
+    private var _list = list
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val _tvTitle = view.findViewById<TextView>(R.id.tvTitle)
@@ -36,11 +32,11 @@ class ProjectsAdapter(arrayList: ArrayList<ModelProjects>): RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var listItem = _arrayList.get(position)
+        val listItem = _list.get(position)
         holder.bind(listItem)
     }
 
     override fun getItemCount(): Int {
-        return _arrayList.size
+        return _list.size
     }
 }

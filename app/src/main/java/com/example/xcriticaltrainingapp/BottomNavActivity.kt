@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -36,7 +35,7 @@ class BottomNavActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setSupportActionBar(binding.toolbar)
-
+        
         binding.navToolbarView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.about_app -> {
@@ -51,9 +50,13 @@ class BottomNavActivity : AppCompatActivity() {
                 R.id.exit -> {
 
                 }
+                R.id.ivCloseProfile -> {
+                    binding.drawerProfile.closeDrawer(GravityCompat.START)
+
+                }
             }
 
-            binding.drawerProfile.closeDrawer(GravityCompat.START)
+
             true
         }
     }
