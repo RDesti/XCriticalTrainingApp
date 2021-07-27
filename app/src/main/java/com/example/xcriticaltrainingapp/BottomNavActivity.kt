@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -43,6 +44,8 @@ class BottomNavActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setSupportActionBar(binding.toolbar)
+
+        setCloseDrawerListener()
         
         binding.navToolbarView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -56,10 +59,6 @@ class BottomNavActivity : AppCompatActivity() {
 
                 }
                 R.id.exit -> {
-
-                }
-                R.id.ivCloseProfile -> {
-                    binding.drawerProfile.closeDrawer(GravityCompat.START)
 
                 }
             }
@@ -99,5 +98,15 @@ class BottomNavActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+    private fun setCloseDrawerListener(){
+        val headerView = binding.navToolbarView?.getHeaderView(0)
+        val closeDrawer = headerView?.findViewById<ImageView>(R.id.ivCloseProfile)
+        if (closeDrawer != null) {
+            closeDrawer.setOnClickListener {
+                binding.drawerProfile.closeDrawer(GravityCompat.START)
+            }
+        }
     }
 }
