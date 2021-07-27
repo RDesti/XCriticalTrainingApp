@@ -22,4 +22,7 @@
     <string name="setting">Настройки</string>
     <string name="exit">Выйти</string>
     <string name="email_profile">user@gmail.com</string>
+    <string name="save">Сохранить</string>
+    <string name="title">Заголовок</string>
+    <string name="text_scenario">Текст сценария</string>
 </resources>
