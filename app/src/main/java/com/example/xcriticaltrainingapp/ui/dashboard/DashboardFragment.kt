@@ -2,12 +2,13 @@ package com.example.xcriticaltrainingapp.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.xcriticaltrainingapp.BottomNavActivity
+import com.example.xcriticaltrainingapp.MainActivity
 import com.example.xcriticaltrainingapp.R
 import com.example.xcriticaltrainingapp.databinding.FragmentDashboardBinding
+
 
 class DashboardFragment : Fragment() {
 
@@ -27,7 +28,8 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        
+        (activity as BottomNavActivity?)!!.supportActionBar!!.hide()
+        (activity as BottomNavActivity?)!!.setSupportActionBar(binding.toolbarAddProject)
         setHasOptionsMenu(true)
         //val textView: TextView = binding.textDashboard
         //dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
