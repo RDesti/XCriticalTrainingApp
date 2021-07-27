@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.xcriticaltrainingapp.databinding.ActivityBottomNavBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,6 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class BottomNavActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomNavBinding
+    private lateinit var rc: RecyclerView
+    var isLinearLayout = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +28,8 @@ class BottomNavActivity : AppCompatActivity() {
         binding = ActivityBottomNavBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        rc = findViewById(R.id.rcViewProjects)
         val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_bottom_nav)
 
         binding.floatingActionButton.setOnClickListener {
@@ -56,7 +61,6 @@ class BottomNavActivity : AppCompatActivity() {
                 }
             }
 
-
             true
         }
     }
@@ -72,7 +76,14 @@ class BottomNavActivity : AppCompatActivity() {
                 binding.drawerProfile.openDrawer(GravityCompat.START)
             }
             R.id.grid_four -> {
-
+                if(isLinearLayout) {
+                    rc.layoutManager = LinearLayoutManager(this@BottomNavActivity)
+                    isLinearLayout = false
+                }
+                else{
+                    rc.layoutManager = GridLayoutManager(this@BottomNavActivity, 2,GridLayoutManager.VERTICAL, false )
+                    isLinearLayout = true
+                }
             }
         }
         return true
