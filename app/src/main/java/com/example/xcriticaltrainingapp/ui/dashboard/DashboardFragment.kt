@@ -31,9 +31,15 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        (activity as BottomNavActivity?)!!.supportActionBar!!.hide()
-        (activity as BottomNavActivity?)!!.setSupportActionBar(binding.toolbarAddProject)
+        //(activity as BottomNavActivity?)!!.supportActionBar!!.hide()
+        //(activity as BottomNavActivity?)!!.setSupportActionBar(binding.toolbarAddProject)
+
+        (activity as BottomNavActivity?)!!.supportActionBar!!.setHomeButtonEnabled(false)
+        (activity as BottomNavActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+        (activity as BottomNavActivity?)!!.supportActionBar!!.setIcon(R.drawable.ic_arrowleft)
+
         setHasOptionsMenu(true)
+
         //val textView: TextView = binding.textDashboard
         //dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
         //    textView.text = it
