@@ -68,6 +68,7 @@ class DashboardFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        (activity as BottomNavActivity?)!!.supportActionBar!!.setIcon(R.drawable.ic_list)
         _binding = null
     }
 }
