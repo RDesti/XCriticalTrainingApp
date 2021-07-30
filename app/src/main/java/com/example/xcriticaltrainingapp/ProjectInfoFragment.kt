@@ -13,10 +13,12 @@ import com.example.xcriticaltrainingapp.databinding.ActivityMainBinding
 import com.example.xcriticaltrainingapp.databinding.FragmentHomeBinding
 import com.example.xcriticaltrainingapp.databinding.FragmentProjectInfoBinding
 import com.example.xcriticaltrainingapp.ui.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+@AndroidEntryPoint
 class ProjectInfoFragment : Fragment() {
 
     private lateinit var projectInfoViewModel: ProjectInfoViewModel
