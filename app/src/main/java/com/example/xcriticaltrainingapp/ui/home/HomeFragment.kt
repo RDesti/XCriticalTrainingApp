@@ -1,5 +1,6 @@
 package com.example.xcriticaltrainingapp.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -7,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.xcriticaltrainingapp.*
 import com.example.xcriticaltrainingapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,15 +36,57 @@ class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.rcViewProjects.hasFixedSize()
-        binding.rcViewProjects.layoutManager = LinearLayoutManager(this.context)
-        binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects(), this)
+        initRecyclerView(root)
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun initRecyclerView(view: View){
+        binding.rcViewProjects.hasFixedSize()
+        binding.rcViewProjects.layoutManager = LinearLayoutManager(this.context)
+        binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects(), this)
+        //right swipe delete
+        val itemSwipe = object :  ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                showDialog(viewHolder)
+            }
+        }
+
+        val swap = ItemTouchHelper(itemSwipe)
+        swap.attachToRecyclerView(binding.rcViewProjects)
+    }
+
+    private fun showDialog(viewHolder: RecyclerView.ViewHolder) {
+        val builder = AlertDialog.Builder(activity)
+        builder.setTitle("Delete")
+        builder.setMessage("")
+        builder.setPositiveButton("ok") {dialog, which ->
+            val position = viewHolder.adapterPosition
+            list.deleteProject(position)
+            binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects(), this)
+        }
+
+        builder.setNegativeButton("cancel") {dialog, which ->
+            val position = viewHolder.adapterPosition
+            binding.rcViewProjects.adapter?.notifyItemChanged(position)
+
+        }
+
+        builder.show()
     }
 
     override fun onItemClick(model: ModelProjects) {
