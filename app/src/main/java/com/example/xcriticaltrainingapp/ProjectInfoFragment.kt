@@ -46,6 +46,10 @@ class ProjectInfoFragment : Fragment() {
         binding.editTextTitleProject.setText(param1)
         binding.editTextTextScenario.setText(param2)
 
+        binding.ivBack.setOnClickListener {
+            activity?.supportFragmentManager?.popBackStack()
+        }
+
         return root
 
     }

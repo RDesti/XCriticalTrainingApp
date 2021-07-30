@@ -7,8 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.xcriticaltrainingapp.BottomNavActivity
 import com.example.xcriticaltrainingapp.R
 import com.example.xcriticaltrainingapp.databinding.FragmentDashboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
@@ -27,25 +28,22 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //(activity as BottomNavActivity?)!!.supportActionBar!!.hide()
-        //(activity as BottomNavActivity?)!!.setSupportActionBar(binding.toolbarAddProject)
+        binding.ivBack.setOnClickListener {
+            activity?.supportFragmentManager?.popBackStack()
+        }
 
-        setHasOptionsMenu(true)
+        binding.tvSave.setOnClickListener {
+            dashboardViewModel.addNewProject(
+                binding.editTextTitleAddProject.text.toString(),
+                binding.editTextTextScenario.text.toString()
+            )
 
-        //val textView: TextView = binding.textDashboard
-        //dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-        //    textView.text = it
-        //})
+            binding.editTextTitleAddProject.text.clear()
+            binding.editTextTextScenario.text.clear()
+        }
 
         return root
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear()
-        inflater.inflate(R.menu.toolbar_add_project_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

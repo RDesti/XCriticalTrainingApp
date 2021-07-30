@@ -22,6 +22,7 @@ class DashboardViewModel @Inject constructor() : ViewModel() {
     val text: LiveData<String> = _text
 
     fun addNewProject(title: String, description: String){
+
         val model = ModelProjects(
             title,
             description,

@@ -50,6 +50,9 @@ class BottomNavActivity : AppCompatActivity() {
                 R.id.navigation_dashboard -> {
                     binding.toolbar.visibility = View.GONE
                 }
+                R.id.projectInfoFragment -> {
+                    supportActionBar?.hide()
+                }
             }
         }
 
@@ -97,9 +100,6 @@ class BottomNavActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-        val tvTitle = findViewById<EditText>(R.id.editTextTitleAddProject)
-        val tvScenario = findViewById<EditText>(R.id.editTextTextScenario)
 
         when(item.itemId){
             android.R.id.home -> {
@@ -114,11 +114,6 @@ class BottomNavActivity : AppCompatActivity() {
                     rc.layoutManager = GridLayoutManager(this, 2,GridLayoutManager.VERTICAL, false )
                     isLinearLayout = true
                 }
-            }
-            R.id.save -> {
-                dashboardViewModel.addNewProject(tvTitle.text.toString(), tvScenario.text.toString())
-                tvTitle.text.clear()
-                tvScenario.text.clear()
             }
         }
         return true
