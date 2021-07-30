@@ -3,7 +3,6 @@ package com.example.xcriticaltrainingapp.ui.home
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -36,7 +35,7 @@ class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        initRecyclerView(root)
+        initRecyclerView()
 
         return root
     }
@@ -46,7 +45,7 @@ class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
         _binding = null
     }
 
-    private fun initRecyclerView(view: View){
+    private fun initRecyclerView() {
         binding.rcViewProjects.hasFixedSize()
         binding.rcViewProjects.layoutManager = LinearLayoutManager(this.context)
         binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects(), this)

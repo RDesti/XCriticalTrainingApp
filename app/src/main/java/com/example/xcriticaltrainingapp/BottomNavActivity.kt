@@ -1,5 +1,6 @@
 package com.example.xcriticaltrainingapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -7,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -23,7 +23,6 @@ import com.example.xcriticaltrainingapp.ui.dashboard.DashboardViewModel
 import com.example.xcriticaltrainingapp.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.FieldPosition
 
 @AndroidEntryPoint
 class BottomNavActivity : AppCompatActivity() {
@@ -49,7 +48,7 @@ class BottomNavActivity : AppCompatActivity() {
                     binding.toolbar.visibility = View.VISIBLE
                 }
                 R.id.navigation_dashboard -> {
-                    binding.toolbar.visibility = View.INVISIBLE
+                    binding.toolbar.visibility = View.GONE
                 }
             }
         }
@@ -108,11 +107,11 @@ class BottomNavActivity : AppCompatActivity() {
             }
             R.id.grid_four -> {
                 if(isLinearLayout) {
-                    rc.layoutManager = LinearLayoutManager(this@BottomNavActivity)
+                    rc.layoutManager = LinearLayoutManager(this)
                     isLinearLayout = false
                 }
                 else{
-                    rc.layoutManager = GridLayoutManager(this@BottomNavActivity, 2,GridLayoutManager.VERTICAL, false )
+                    rc.layoutManager = GridLayoutManager(this, 2,GridLayoutManager.VERTICAL, false )
                     isLinearLayout = true
                 }
             }

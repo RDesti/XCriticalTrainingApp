@@ -30,10 +30,6 @@ class DashboardFragment : Fragment() {
         //(activity as BottomNavActivity?)!!.supportActionBar!!.hide()
         //(activity as BottomNavActivity?)!!.setSupportActionBar(binding.toolbarAddProject)
 
-        (activity as BottomNavActivity?)!!.supportActionBar!!.setHomeButtonEnabled(false)
-        (activity as BottomNavActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(false)
-        (activity as BottomNavActivity?)!!.supportActionBar!!.setIcon(R.drawable.ic_arrowleft)
-
         setHasOptionsMenu(true)
 
         //val textView: TextView = binding.textDashboard
@@ -53,7 +49,6 @@ class DashboardFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (activity as BottomNavActivity?)!!.supportActionBar!!.setIcon(R.drawable.ic_list)
         _binding = null
     }
 }
