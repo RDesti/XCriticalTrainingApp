@@ -19,4 +19,40 @@
         android:id="@+id/navigation_notifications"
         android:name="com.example.xcriticaltrainingapp.ui.notifications.NotificationsFragment"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/aboutAppInfoFragment"
+        android:name="com.example.xcriticaltrainingapp.AboutAppInfoFragment"
+        android:label="fragment_about_app_info"
+        tools:layout="@layout/fragment_about_app_info" >
+        <action
+            android:id="@+id/action_aboutAppInfoFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.xcriticaltrainingapp.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment2"
+        android:name="com.example.xcriticaltrainingapp.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment2_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectInfoFragment"
+        android:name="com.example.xcriticaltrainingapp.ProjectInfoFragment"
+        android:label="fragment_project_info"
+        tools:layout="@layout/fragment_project_info" >
+        <action
+            android:id="@+id/action_projectInfoFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

@@ -1,13 +1,9 @@
 package com.example.xcriticaltrainingapp.ui.dashboard
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.xcriticaltrainingapp.BottomNavActivity
 import com.example.xcriticaltrainingapp.R
 import com.example.xcriticaltrainingapp.databinding.FragmentDashboardBinding
@@ -54,17 +50,6 @@ class DashboardFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            android.R.id.home -> {
-
-            }
-            R.id.save -> {
-                dashboardViewModel.addNewProject(binding.tvTitleAddProject.toString(), binding.tvTextScenaario.toString())
-            }
-        }
-        return true
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

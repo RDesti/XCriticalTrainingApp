@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ProjectsAdapter(list: MutableList<ModelProjects>): RecyclerView.Adapter<ProjectsAdapter.ViewHolder>() {
+class ProjectsAdapter(list: MutableList<ModelProjects>, clickListener: ClickListener): RecyclerView.Adapter<ProjectsAdapter.ViewHolder>() {
     private var _list = list
+    private val _clickListener = clickListener
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val _tvTitle = view.findViewById<TextView>(R.id.tvTitle)
@@ -34,9 +35,17 @@ class ProjectsAdapter(list: MutableList<ModelProjects>): RecyclerView.Adapter<Pr
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listItem = _list.get(position)
         holder.bind(listItem)
+
+        holder.itemView.setOnClickListener {
+            _clickListener.onItemClick(_list.get(position))
+        }
     }
 
     override fun getItemCount(): Int {
         return _list.size
+    }
+
+    interface ClickListener{
+        fun onItemClick(model: ModelProjects)
     }
 }

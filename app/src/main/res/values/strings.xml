@@ -25,4 +25,6 @@
     <string name="save">Сохранить</string>
     <string name="title">Заголовок</string>
     <string name="text_scenario">Текст сценария</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

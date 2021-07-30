@@ -1,14 +1,18 @@
 package com.example.xcriticaltrainingapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,15 +20,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.xcriticaltrainingapp.databinding.ActivityBottomNavBinding
 import com.example.xcriticaltrainingapp.ui.dashboard.DashboardViewModel
+import com.example.xcriticaltrainingapp.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.FieldPosition
 
 @AndroidEntryPoint
 class BottomNavActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBottomNavBinding
     private lateinit var rc: RecyclerView
-    var isLinearLayout = true
+    var isLinearLayout = false
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +41,18 @@ class BottomNavActivity : AppCompatActivity() {
 
         rc = findViewById(R.id.rcViewProjects)
         val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_bottom_nav)
+        navController = findNavController(R.id.nav_host_fragment_activity_bottom_nav)
+
+        navController.addOnDestinationChangedListener{ _, destination, _ ->
+            when(destination.id){
+                R.id.navigation_home -> {
+                    binding.toolbar.visibility = View.VISIBLE
+                }
+                R.id.navigation_dashboard -> {
+                    binding.toolbar.visibility = View.INVISIBLE
+                }
+            }
+        }
 
         binding.floatingActionButton.setOnClickListener {
             navController.navigate(R.id.navigation_dashboard)
@@ -46,23 +64,30 @@ class BottomNavActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         setCloseDrawerListener()
+
+        val fragment: Fragment = HomeFragment.newInstance()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.recycler_container, fragment, "home fragment")
+        transaction.commit()
         
         binding.navToolbarView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.about_app -> {
-                    Toast.makeText(this@BottomNavActivity, "about_app", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.aboutAppInfoFragment)
                 }
                 R.id.notification -> {
-
+                    navController.navigate(R.id.notificationFragment)
                 }
                 R.id.setting -> {
-
+                    navController.navigate(R.id.settingsFragment2)
                 }
                 R.id.exit -> {
-
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 }
             }
 
+            binding.drawerProfile.closeDrawer(GravityCompat.START)
             true
         }
     }
@@ -100,13 +125,10 @@ class BottomNavActivity : AppCompatActivity() {
         return true
     }
 
-    private fun setCloseDrawerListener(){
-        val headerView = binding.navToolbarView?.getHeaderView(0)
-        val closeDrawer = headerView?.findViewById<ImageView>(R.id.ivCloseProfile)
-        if (closeDrawer != null) {
-            closeDrawer.setOnClickListener {
-                binding.drawerProfile.closeDrawer(GravityCompat.START)
-            }
+    private fun setCloseDrawerListener() {
+        val headerView = binding.navToolbarView.getHeaderView(0)
+        headerView?.findViewById<ImageView>(R.id.ivCloseProfile)?.setOnClickListener {
+            binding.drawerProfile.closeDrawer(GravityCompat.START)
         }
     }
 }

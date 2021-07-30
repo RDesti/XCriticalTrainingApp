@@ -2,20 +2,18 @@ package com.example.xcriticaltrainingapp.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.xcriticaltrainingapp.ModelProjects
-import com.example.xcriticaltrainingapp.ProjectsAdapter
-import com.example.xcriticaltrainingapp.R
-import com.example.xcriticaltrainingapp.Repository
+import com.example.xcriticaltrainingapp.*
 import com.example.xcriticaltrainingapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
@@ -37,12 +35,36 @@ class HomeFragment : Fragment() {
 
         binding.rcViewProjects.hasFixedSize()
         binding.rcViewProjects.layoutManager = LinearLayoutManager(this.context)
-        binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects())
+        binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects(), this)
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClick(model: ModelProjects) {
+        val fragment: Fragment = ProjectInfoFragment.newInstance(model.titleText)
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        if (transaction != null) {
+            activity?.supportFragmentManager!!.findFragmentByTag("home fragment")?.let {
+                transaction.hide(
+                    it
+                )
+            }
+        }
+        transaction?.add(R.id.recycler_container, fragment)
+        transaction?.addToBackStack(null)
+        transaction?.commit()
+    }
+
+    companion object{
+        fun newInstance() =
+            HomeFragment().apply {
+            arguments = Bundle().apply {
+
+            }
+        }
     }
 }
