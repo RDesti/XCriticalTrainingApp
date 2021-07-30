@@ -45,7 +45,7 @@ class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
     }
 
     override fun onItemClick(model: ModelProjects) {
-        val fragment: Fragment = ProjectInfoFragment.newInstance(model.titleText)
+        val fragment: Fragment = ProjectInfoFragment.newInstance(model.titleText, model.contentText)
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if (transaction != null) {
             activity?.supportFragmentManager!!.findFragmentByTag("home fragment")?.let {

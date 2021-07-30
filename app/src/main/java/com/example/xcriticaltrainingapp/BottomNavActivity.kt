@@ -98,9 +98,9 @@ class BottomNavActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
-        var tvTitle = findViewById<EditText>(R.id.editTextTitleAddProject)
-        var tvScenario = findViewById<EditText>(R.id.editTextTextScenario)
+        val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        val tvTitle = findViewById<EditText>(R.id.editTextTitleAddProject)
+        val tvScenario = findViewById<EditText>(R.id.editTextTextScenario)
 
         when(item.itemId){
             android.R.id.home -> {
