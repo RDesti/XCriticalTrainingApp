@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.xcriticaltrainingapp.dataBase.entities.ProjectDb
 
-class ProjectsAdapter(list: MutableList<ModelProjects>, clickListener: ClickListener): RecyclerView.Adapter<ProjectsAdapter.ViewHolder>() {
+class ProjectsAdapter(list: List<ProjectDb>, clickListener: ClickListener): RecyclerView.Adapter<ProjectsAdapter.ViewHolder>() {
     private var _list = list
     private val _clickListener = clickListener
 
@@ -18,12 +19,16 @@ class ProjectsAdapter(list: MutableList<ModelProjects>, clickListener: ClickList
         val _ivDevice = view.findViewById<ImageView>(R.id.ivDevice)
         val _ivArrow = view.findViewById<ImageView>(R.id.ivArrow)
 
-        fun bind(modelProject: ModelProjects){
-            _tvTitle.text = modelProject.titleText
-            _tvContent.text = modelProject.contentText
-            _tvDate.text = modelProject.date
-            _ivDevice.setImageResource(modelProject.imageDevice)
-            _ivArrow.setImageResource(modelProject.imageArrow)
+        fun bind(modelProject: ProjectDb?){
+            if (modelProject != null) {
+                _tvTitle.text = modelProject.title
+            }
+            if (modelProject != null) {
+                _tvContent.text = modelProject.scenario
+            }
+            if (modelProject != null) {
+                _tvDate.text = modelProject.date
+            }
         }
     }
 
@@ -33,11 +38,11 @@ class ProjectsAdapter(list: MutableList<ModelProjects>, clickListener: ClickList
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listItem = _list.get(position)
+        val listItem = _list[position]
         holder.bind(listItem)
 
         holder.itemView.setOnClickListener {
-            _clickListener.onItemClick(_list.get(position))
+            _list.let { it1 -> _clickListener.onItemClick(it1[position]) }
         }
     }
 
@@ -46,6 +51,6 @@ class ProjectsAdapter(list: MutableList<ModelProjects>, clickListener: ClickList
     }
 
     interface ClickListener{
-        fun onItemClick(model: ModelProjects)
+        fun onItemClick(model: ProjectDb)
     }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.xcriticaltrainingapp.ModelProjects
 import com.example.xcriticaltrainingapp.R
 import com.example.xcriticaltrainingapp.Repository
+import com.example.xcriticaltrainingapp.dataBase.entities.ProjectDb
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.*
 import javax.inject.Inject
@@ -23,12 +24,10 @@ class DashboardViewModel @Inject constructor() : ViewModel() {
 
     fun addNewProject(title: String, description: String){
 
-        val model = ModelProjects(
+        val model = ProjectDb(
             title,
             description,
             Date().time.toString(),
-            R.drawable.ic_devicemobilespeaker,
-            R.drawable.ic_caretright
         )
         list.addProject(model)
     }

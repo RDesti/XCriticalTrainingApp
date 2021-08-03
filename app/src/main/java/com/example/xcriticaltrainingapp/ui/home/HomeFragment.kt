@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.xcriticaltrainingapp.*
+import com.example.xcriticaltrainingapp.dataBase.entities.ProjectDb
 import com.example.xcriticaltrainingapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -48,7 +49,7 @@ class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
     private fun initRecyclerView() {
         binding.rcViewProjects.hasFixedSize()
         binding.rcViewProjects.layoutManager = LinearLayoutManager(this.context)
-        binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects(), this)
+        binding.rcViewProjects.adapter = list.getProjects()?.let { ProjectsAdapter(it, this) }
         //right swipe delete
         val itemSwipe = object :  ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
 
@@ -73,13 +74,13 @@ class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
         val builder = AlertDialog.Builder(activity)
         builder.setTitle("Delete")
         builder.setMessage("")
-        builder.setPositiveButton("ok") {dialog, which ->
+        builder.setPositiveButton("ok") { _, _ ->
             val position = viewHolder.adapterPosition
             list.deleteProject(position)
-            binding.rcViewProjects.adapter = ProjectsAdapter(list.getAllProjects(), this)
+            binding.rcViewProjects.adapter = list.getProjects()?.let { ProjectsAdapter(it, this) }
         }
 
-        builder.setNegativeButton("cancel") {dialog, which ->
+        builder.setNegativeButton("cancel") { _, _ ->
             val position = viewHolder.adapterPosition
             binding.rcViewProjects.adapter?.notifyItemChanged(position)
 
@@ -88,8 +89,8 @@ class HomeFragment : Fragment(), ProjectsAdapter.ClickListener {
         builder.show()
     }
 
-    override fun onItemClick(model: ModelProjects) {
-        val fragment: Fragment = ProjectInfoFragment.newInstance(model.titleText, model.contentText)
+    override fun onItemClick(model: ProjectDb) {
+        val fragment: Fragment = ProjectInfoFragment.newInstance(model.title.toString(), model.scenario.toString())
         val transaction = activity?.supportFragmentManager?.beginTransaction()
         if (transaction != null) {
             activity?.supportFragmentManager!!.findFragmentByTag("home fragment")?.let {
