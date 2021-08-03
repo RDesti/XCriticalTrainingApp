@@ -8,7 +8,7 @@ import javax.inject.Singleton
 @Singleton
 class Repository @Inject constructor(private val projectDbDao: ProjectDbDao) {
 
-    fun addProject(projectDb: ProjectDb): Unit = projectDbDao.addProject(projectDb)
+    fun addProject(projectDb: ProjectDb) = projectDbDao.addProject(projectDb)
 
     fun deleteProject(id: Int) = projectDbDao.deleteProjectById(id)
 

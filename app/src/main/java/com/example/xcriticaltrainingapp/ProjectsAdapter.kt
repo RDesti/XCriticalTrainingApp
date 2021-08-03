@@ -16,8 +16,6 @@ class ProjectsAdapter(list: List<ProjectDb>, clickListener: ClickListener): Recy
         val _tvTitle = view.findViewById<TextView>(R.id.tvTitle)
         val _tvContent = view.findViewById<TextView>(R.id.tvContent)
         val _tvDate = view.findViewById<TextView>(R.id.tvDate)
-        val _ivDevice = view.findViewById<ImageView>(R.id.ivDevice)
-        val _ivArrow = view.findViewById<ImageView>(R.id.ivArrow)
 
         fun bind(modelProject: ProjectDb?){
             if (modelProject != null) {

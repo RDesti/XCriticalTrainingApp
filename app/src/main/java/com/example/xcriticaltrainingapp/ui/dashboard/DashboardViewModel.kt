@@ -3,8 +3,6 @@ package com.example.xcriticaltrainingapp.ui.dashboard
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.xcriticaltrainingapp.ModelProjects
-import com.example.xcriticaltrainingapp.R
 import com.example.xcriticaltrainingapp.Repository
 import com.example.xcriticaltrainingapp.dataBase.entities.ProjectDb
 import dagger.hilt.android.lifecycle.HiltViewModel
